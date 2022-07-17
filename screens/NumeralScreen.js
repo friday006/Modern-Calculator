@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View,TouchableOpacity } from 'react-native'
-import DropdownMenu from 'react-native-dropdown-menu';
+// import DropdownMenu from 'react-native-dropdown-menu';
 import React, { Component } from 'react'
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
@@ -29,12 +29,12 @@ export default class NumeralScreen extends Component{
     for(let i=0;i<5;i++){
       let row=[]
         for(let j=0;j<4;j++){
-          row.push(<TouchableOpacity style={styles.btn} onPress={()=>this.buttonPressed(nums[i][j])}><Text style={styles.numText}>{nums[i][j]}</Text></TouchableOpacity>)
+          row.push(<TouchableOpacity key={nums[i][j]} style={styles.btn} onPress={()=>this.buttonPressed(nums[i][j])}><Text style={styles.numText}>{nums[i][j]}</Text></TouchableOpacity>)
         }
-        rows.push(<View style={styles.row}>{row}</View>)
+        rows.push(<View key={i} style={styles.row}>{row}</View>)
     }
 
-    var data =["BIN","DEC","OCT","HEX"]
+    // var data =["BIN","DEC","OCT","HEX"]
 
     // let ops=[]
     // let lets=["A","B","C","D","E",'F']
@@ -50,13 +50,13 @@ export default class NumeralScreen extends Component{
      </View>
      <View style={styles.cal}>
       <View style={styles.numsystem}>
-      <DropdownMenu 
+      {/* <DropdownMenu 
           style={{flex: 1}}
           bgColor={'white'}
           tintColor={'#666666'}
           activityTintColor={'green'}>
 
-      </DropdownMenu>
+      </DropdownMenu> */}
       </View>
         <Text style={styles.cal_Text}>{this.state.cal}</Text>     
      </View>
