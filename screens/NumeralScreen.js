@@ -1,5 +1,4 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
-// import DropdownMenu from 'react-native-dropdown-menu';
 import { Picker } from '@react-native-picker/picker';
 import React, { Component } from 'react'
 
@@ -10,39 +9,145 @@ export default class NumeralScreen extends Component {
     super()
     this.state = {
       cal: "",
-      cal_Text: "",
-      selectedLanguage: ""
+      cal_result: "",
+      selectednum: "",
+      selectednum2: "0",
+      valueofnum:"",
+      nums: [["AC", "Del", "F", "E"], [7, 8, 9, "D"], [4, 5, 6, "C"], [1, 2, 3, "B"], [".", 0, "=", "A"]]
+    }
+
+  }
+
+  calculate(){
+  switch(this.state.selectednum2){
+    case "Binary":
+      const text = this.state.cal
+      var Text = parseInt(text,2)
+      Text.toString(10)
+      this.setState({
+        cal_result: Text
+      })
+      break
+    case "0":
+
+      break
+}
+  }
+
+  opration(text){
+    switch(text){
+      case "Del":
+        const text = this.state.cal.split('')
+        text.pop()
+        this.setState({
+        cal: text.join('')
+          })
+        break
+      case "AC":
+        let text1= ""
+          
+        this.setState({
+          cal:text1,
+          cal_result: text1
+        })
+        break 
+    }
+    
+  }
+
+  buttonPressed(text) {
+
+    if(text== "="){            
+      return  this.calculate()
+    }
+    else if(text == "Del"){
+     return this.opration(text)
+    }
+    else if(text == "AC"){
+      return this.opration(text)
+    }
+    this.setState({
+      cal: this.state.cal+text
+    }
+    )
+    
+  }
+  numsys(value) {
+    switch (value) {
+      case "Binary":
+        for (let k = 0; k < 5; k++) {
+          for (let l = 0; l < 4; l++) {
+            if (this.state.nums[k][l] == 1 || this.state.nums[k][l] == 0 || this.state.nums[k][l] == "AC" || this.state.nums[k][l] == "Del" || this.state.nums[k][l] == "=") {
+            }
+            else {
+              this.setState([this.state.nums[k][l] = "x"])
+            }
+          }
+        }
+        break
+      case "Decimal":
+        this.setState([this.state.nums = [["AC", "Del", "F", "E"], [7, 8, 9, "D"], [4, 5, 6, "C"], [1, 2, 3, "B"], ["", 0, ".", "A"]]])
+
+        for (let k = 0; k < 5; k++) {
+          for (let l = 0; l < 4; l++) {
+            if (this.state.nums[k][l] == 0 || this.state.nums[k][l] == 1 || this.state.nums[k][l] == 2 || this.state.nums[k][l] == 3 || this.state.nums[k][l] == 4 || this.state.nums[k][l] == 5 || this.state.nums[k][l] == 6 || this.state.nums[k][l] == 7 || this.state.nums[k][l] == 8 || this.state.nums[k][l] == 9 || this.state.nums[k][l] == "AC" || this.state.nums[k][l] == "Del") {
+
+            }
+            else {
+              this.setState([this.state.nums[k][l] = "x"])
+            }
+
+
+          }
+        }
+
+        break
+      case "Octal":
+        this.setState([this.state.nums = [["AC", "Del", "F", "E"], [7, 8, 9, "D"], [4, 5, 6, "C"], [1, 2, 3, "B"], ["", 0, ".", "A"]]])
+
+        for (let k = 0; k < 5; k++) {
+          for (let l = 0; l < 4; l++) {
+            if (this.state.nums[k][l] == 0 || this.state.nums[k][l] == 1 || this.state.nums[k][l] == 2 || this.state.nums[k][l] == 3 || this.state.nums[k][l] == 4 || this.state.nums[k][l] == 5 || this.state.nums[k][l] == 6 || this.state.nums[k][l] == 7 || this.state.nums[k][l] == 8 || this.state.nums[k][l] == "AC" || this.state.nums[k][l] == "Del") {
+            }
+            else {
+              this.setState([this.state.nums[k][l] = "x"])
+            }
+          }
+        }
+
+        break
+      case "Hexadecimal":
+        this.setState([this.state.nums = [["AC", "Del", "F", "E"], [7, 8, 9, "D"], [4, 5, 6, "C"], [1, 2, 3, "B"], ["", 0, ".", "A"]]])
+
+        break
+      default:
+        console.log(value)
 
     }
   }
-
-
-  buttonPressed(text) {
-    this.setState({
-      cal: this.state.cal + text
-    })
+  numsys_down(valueofpicker){
+    this.state.valueofnum = valueofpicker
   }
 
   render() {
     const { navigation } = this.props;
-    // const [selectedLanguage, setSelectedLanguage] = useState();
+
     let rows = []
-    let nums = [["AC", "D", "F", "E"], [7, 8, 9, "D"], [4, 5, 6, "C"], [1, 2, 3, "B"], ["", 0, ".", "A"]]
+    
     for (let i = 0; i < 5; i++) {
       let row = []
       for (let j = 0; j < 4; j++) {
-        row.push(<TouchableOpacity key={nums[i][j]} style={styles.btn} onPress={() => this.buttonPressed(nums[i][j])}><Text style={styles.numText}>{nums[i][j]}</Text></TouchableOpacity>)
+        if (this.state.nums[i][j] == "x") {
+          row.push(<View key={i - j} style={styles.btn}><Text style={styles.numText_Bin}>{this.state.nums[i][j]}</Text></View>)
+        }
+        else {
+          row.push(<TouchableOpacity key={i + j} style={styles.btn} onPress={() => this.buttonPressed(this.state.nums[i][j])}><Text style={styles.numText}>{this.state.nums[i][j]}</Text></TouchableOpacity>)
+        }
       }
       rows.push(<View key={i} style={styles.row}>{row}</View>)
     }
+   
 
-    // var data =["BIN","DEC","OCT","HEX"]
-
-    // let ops=[]
-    // let lets=["A","B","C","D","E",'F']
-    //   for(let i=0;i<6;i++){
-    //     ops.push(<TouchableOpacity><Text style={styles.numText}>{lets[i]}</Text></TouchableOpacity>)
-    //   }""
 
     return (
       <View style={styles.container}>
@@ -55,9 +160,10 @@ export default class NumeralScreen extends Component {
             <Picker
               mode='dropdown'
               style={styles.Picker}
-              selectedValue={this.state.selectedLanguage}
-              onValueChange={(itemValue, itemIndex) => this.setState({ selectedLanguage: itemValue })
+              selectedValue={this.state.selectednum}
+              onValueChange={(itemValue, itemIndex) => this.setState({ selectednum: itemValue }, () => { this.numsys(itemValue) })
               }>
+              <Picker.Item label="Select" value="0" />
               <Picker.Item label="BIN" value="Binary" />
               <Picker.Item label="DEC" value="Decimal" />
               <Picker.Item label="OCT" value="Octal" />
@@ -68,16 +174,29 @@ export default class NumeralScreen extends Component {
             <Text style={styles.cal_Text}>{this.state.cal}</Text>
           </View>
         </View>
-        <View style={styles.cal_result}>
-          <Text>3.4</Text>
+        <View style={styles.cal}>
+          <View style={styles.numsystem}>
+            <Picker
+              mode='dropdown'
+              style={styles.Picker}
+              selectedValue={this.state.selectednum2}
+              onValueChange={(itemValue, itemIndex) => this.setState({ selectednum2: itemValue })
+              }>
+              <Picker.Item label="Select" value="0" />
+              <Picker.Item label="BIN" value="Binary" />
+              <Picker.Item label="DEC" value="Decimal" />
+              <Picker.Item label="OCT" value="Octal" />
+              <Picker.Item label="HEX" value="Hexadecimal" />
+            </Picker>
+          </View>
+          <View style={styles.cal_Text_win}>
+            <Text style={styles.cal_Text}>{this.state.cal_result}</Text>
+          </View>
         </View>
         <View style={styles.nopad}>
           <View style={styles.number}>
             {rows}
           </View>
-          {/* <View style={styles.letters}>
-        
-        </View> */}
         </View>
       </View>
     )
@@ -99,11 +218,9 @@ const styles = StyleSheet.create({
   },
   cal: {
     flex: 1.5,
-    // alignItems:"flex-end",
     justifyContent: 'space-between',
-    // backgroundColor:"blue",
     flexDirection: 'row',
-    // flexGrow:1.5
+    backgroundColor: 'white'
   },
   numsystem: {
     //  backgroundColor:"green",
@@ -117,8 +234,9 @@ const styles = StyleSheet.create({
   Picker: {
     // marginLeft:20,
     width: 100,
-    height: 20,
-    flex: 1
+    height: 50,
+    flex: 1,
+    color: "orange"
   },
   cal_Text_win: {
     // flexGrow:2,
@@ -126,7 +244,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     justifyContent: 'center',
     // marginLeft:30,
-    backgroundColor: 'pink'
+
   },
   cal_Text: {
     fontSize: 25,
@@ -152,6 +270,10 @@ const styles = StyleSheet.create({
   },
   numText: {
     color: "white",
+    fontSize: 30
+  },
+  numText_Bin: {
+    color: "gray",
     fontSize: 30
   },
   number: {
