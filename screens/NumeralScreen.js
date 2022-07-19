@@ -19,19 +19,43 @@ export default class NumeralScreen extends Component {
   }
 
   calculate(){
-  switch(this.state.selectednum2){
+    
+  let numsys_text = this.state.selectednum
+  switch(numsys_text){
     case "Binary":
-      const text = this.state.cal
-      var Text = parseInt(text,2)
-      Text.toString(10)
-      this.setState({
-        cal_result: Text
-      })
-      break
-    case "0":
-
-      break
-}
+      switch(this.state.selectednum2){
+        case "Decimal":
+          const text = this.state.cal
+          let Text = parseInt(text,2)
+          // Text.toString(10)
+          this.setState({
+            cal_result: Text
+          })
+          break
+        case "Octal":
+          const text1 = this.state.cal
+          var Text1 = parseInt(text1,2).toString(8)
+          this.setState({
+            cal_result: Text1
+          })
+          break
+        
+        case "Hexadecimal":
+          const text2 = this.state.cal
+          var Text2 = parseInt(text2,2).toString(16).toUpperCase()
+          console.log(Text2)
+          this.setState({
+            cal_result: Text2
+          })
+          break
+        
+        case "0":
+    
+          break
+    }
+    
+  }
+ 
   }
 
   opration(text){
@@ -86,11 +110,11 @@ export default class NumeralScreen extends Component {
         }
         break
       case "Decimal":
-        this.setState([this.state.nums = [["AC", "Del", "F", "E"], [7, 8, 9, "D"], [4, 5, 6, "C"], [1, 2, 3, "B"], ["", 0, ".", "A"]]])
+        this.setState([this.state.nums = [["AC", "Del", "F", "E"], [7, 8, 9, "D"], [4, 5, 6, "C"], [1, 2, 3, "B"], [".", 0, "=", "A"]]])
 
         for (let k = 0; k < 5; k++) {
           for (let l = 0; l < 4; l++) {
-            if (this.state.nums[k][l] == 0 || this.state.nums[k][l] == 1 || this.state.nums[k][l] == 2 || this.state.nums[k][l] == 3 || this.state.nums[k][l] == 4 || this.state.nums[k][l] == 5 || this.state.nums[k][l] == 6 || this.state.nums[k][l] == 7 || this.state.nums[k][l] == 8 || this.state.nums[k][l] == 9 || this.state.nums[k][l] == "AC" || this.state.nums[k][l] == "Del") {
+            if (this.state.nums[k][l] == 0 || this.state.nums[k][l] == 1 || this.state.nums[k][l] == 2 || this.state.nums[k][l] == 3 || this.state.nums[k][l] == 4 || this.state.nums[k][l] == 5 || this.state.nums[k][l] == 6 || this.state.nums[k][l] == 7 || this.state.nums[k][l] == 8 || this.state.nums[k][l] == 9 || this.state.nums[k][l] == "AC" || this.state.nums[k][l] == "Del" || this.state.nums[k][l] == "=") {
 
             }
             else {
@@ -103,11 +127,11 @@ export default class NumeralScreen extends Component {
 
         break
       case "Octal":
-        this.setState([this.state.nums = [["AC", "Del", "F", "E"], [7, 8, 9, "D"], [4, 5, 6, "C"], [1, 2, 3, "B"], ["", 0, ".", "A"]]])
+        this.setState([this.state.nums = [["AC", "Del", "F", "E"], [7, 8, 9, "D"], [4, 5, 6, "C"], [1, 2, 3, "B"], [".", 0, "=", "A"]]])
 
         for (let k = 0; k < 5; k++) {
           for (let l = 0; l < 4; l++) {
-            if (this.state.nums[k][l] == 0 || this.state.nums[k][l] == 1 || this.state.nums[k][l] == 2 || this.state.nums[k][l] == 3 || this.state.nums[k][l] == 4 || this.state.nums[k][l] == 5 || this.state.nums[k][l] == 6 || this.state.nums[k][l] == 7 || this.state.nums[k][l] == 8 || this.state.nums[k][l] == "AC" || this.state.nums[k][l] == "Del") {
+            if (this.state.nums[k][l] == 0 || this.state.nums[k][l] == 1 || this.state.nums[k][l] == 2 || this.state.nums[k][l] == 3 || this.state.nums[k][l] == 4 || this.state.nums[k][l] == 5 || this.state.nums[k][l] == 6 || this.state.nums[k][l] == 7 || this.state.nums[k][l] == 8 || this.state.nums[k][l] == "AC" || this.state.nums[k][l] == "Del" || this.state.nums[k][l] == "=") {
             }
             else {
               this.setState([this.state.nums[k][l] = "x"])
@@ -117,7 +141,7 @@ export default class NumeralScreen extends Component {
 
         break
       case "Hexadecimal":
-        this.setState([this.state.nums = [["AC", "Del", "F", "E"], [7, 8, 9, "D"], [4, 5, 6, "C"], [1, 2, 3, "B"], ["", 0, ".", "A"]]])
+        this.setState([this.state.nums = [["AC", "Del", "F", "E"], [7, 8, 9, "D"], [4, 5, 6, "C"], [1, 2, 3, "B"], [".", 0, "=", "A"]]])
 
         break
       default:
@@ -125,9 +149,7 @@ export default class NumeralScreen extends Component {
 
     }
   }
-  numsys_down(valueofpicker){
-    this.state.valueofnum = valueofpicker
-  }
+ 
 
   render() {
     const { navigation } = this.props;
