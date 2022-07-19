@@ -27,7 +27,6 @@ export default class NumeralScreen extends Component {
         case "Decimal":
           const text = this.state.cal
           let Text = parseInt(text,2)
-          // Text.toString(10)
           this.setState({
             cal_result: Text
           })
@@ -52,7 +51,86 @@ export default class NumeralScreen extends Component {
         case "0":
     
           break
-    }
+      }
+      break
+    case "Decimal":
+      switch(this.state.selectednum2){
+        case "Binary":
+          const text_bin = this.state.cal
+          var Text_bin = parseInt(text_bin).toString(2)
+          this.setState({
+            cal_result: Text_bin
+          })
+          break
+        case "Octal":
+          const text_oct = this.state.cal
+          var Text_oct = parseInt(text_oct).toString(8)
+          this.setState({
+            cal_result: Text_oct
+          })
+          break
+        case "Hexadecimal":
+          const text_hex = this.state.cal
+          var Text_hex = parseInt(text_hex).toString(16).toUpperCase()
+          this.setState({
+            cal_result: Text_hex
+          })
+          break
+      }
+      break
+    case "Octal":
+      switch(this.state.selectednum2){
+        case "Binary":
+          const text_bin1 = this.state.cal
+          console.log("hi"+text_bin1)
+          var Text_bin1 = parseInt(text_bin1,8).toString(2)
+          console.log("bye"+Text_bin1)
+          this.setState({
+            cal_result: Text_bin1
+          })
+          break
+        case "Decimal":
+          const text_dec1 = this.state.cal
+          var Text_dec1 = parseInt(text_dec1,8).toString(10)
+          this.setState({
+            cal_result: Text_dec1
+          })
+          break
+        case "Hexadecimal":
+          const text_hex1 = this.state.cal
+          var Text_hex1 = parseInt(text_hex1,8).toString(16).toUpperCase()
+          this.setState({
+            cal_result: Text_hex1
+          })
+          break
+      }
+      break
+    case "Hexadecimal" :
+      switch(this.state.selectednum2){
+        case "Binary":
+          const text_bin2 = this.state.cal
+          var Text_bin2 = parseInt(text_bin2,16).toString(2)
+          this.setState({
+            cal_result: Text_bin2
+          })
+          break
+        case "Decimal":
+          const text_dec2 = this.state.cal
+          var Text_dec2 = parseInt(text_dec2,16).toString(10)
+          this.setState({
+            cal_result: Text_dec2
+          })
+          break
+        case "Octal":
+          const text_oct2 = this.state.cal
+          var Text_oct2 = parseInt(text_oct2,16).toString(8)
+          this.setState({
+            cal_result: Text_oct2
+          })
+          break
+      }
+      break
+
     
   }
  
@@ -131,7 +209,7 @@ export default class NumeralScreen extends Component {
 
         for (let k = 0; k < 5; k++) {
           for (let l = 0; l < 4; l++) {
-            if (this.state.nums[k][l] == 0 || this.state.nums[k][l] == 1 || this.state.nums[k][l] == 2 || this.state.nums[k][l] == 3 || this.state.nums[k][l] == 4 || this.state.nums[k][l] == 5 || this.state.nums[k][l] == 6 || this.state.nums[k][l] == 7 || this.state.nums[k][l] == 8 || this.state.nums[k][l] == "AC" || this.state.nums[k][l] == "Del" || this.state.nums[k][l] == "=") {
+            if (this.state.nums[k][l] == 0 || this.state.nums[k][l] == 1 || this.state.nums[k][l] == 2 || this.state.nums[k][l] == 3 || this.state.nums[k][l] == 4 || this.state.nums[k][l] == 5 || this.state.nums[k][l] == 6 || this.state.nums[k][l] == 7 || this.state.nums[k][l] == "AC" || this.state.nums[k][l] == "Del" || this.state.nums[k][l] == "=") {
             }
             else {
               this.setState([this.state.nums[k][l] = "x"])
@@ -145,7 +223,7 @@ export default class NumeralScreen extends Component {
 
         break
       default:
-        console.log(value)
+        // console.log(value)
 
     }
   }
