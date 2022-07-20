@@ -12,169 +12,170 @@ export default class NumeralScreen extends Component {
       cal_result: "",
       selectednum: "",
       selectednum2: "0",
-      valueofnum:"",
+      valueofnum: "",
       nums: [["AC", "Del", "F", "E"], [7, 8, 9, "D"], [4, 5, 6, "C"], [1, 2, 3, "B"], [".", 0, "=", "A"]]
     }
 
   }
 
-  calculate(){
-    
-  let numsys_text = this.state.selectednum
-  switch(numsys_text){
-    case "Binary":
-      switch(this.state.selectednum2){
-        case "Decimal":
-          const text = this.state.cal
-          let Text = parseInt(text,2)
-          this.setState({
-            cal_result: Text
-          })
-          break
-        case "Octal":
-          const text1 = this.state.cal
-          var Text1 = parseInt(text1,2).toString(8)
-          this.setState({
-            cal_result: Text1
-          })
-          break
-        
-        case "Hexadecimal":
-          const text2 = this.state.cal
-          var Text2 = parseInt(text2,2).toString(16).toUpperCase()
-          console.log(Text2)
-          this.setState({
-            cal_result: Text2
-          })
-          break
-        
-        case "0":
-    
-          break
-      }
-      break
-    case "Decimal":
-      switch(this.state.selectednum2){
-        case "Binary":
-          const text_bin = this.state.cal
-          var Text_bin = parseInt(text_bin).toString(2)
-          this.setState({
-            cal_result: Text_bin
-          })
-          break
-        case "Octal":
-          const text_oct = this.state.cal
-          var Text_oct = parseInt(text_oct).toString(8)
-          this.setState({
-            cal_result: Text_oct
-          })
-          break
-        case "Hexadecimal":
-          const text_hex = this.state.cal
-          var Text_hex = parseInt(text_hex).toString(16).toUpperCase()
-          this.setState({
-            cal_result: Text_hex
-          })
-          break
-      }
-      break
-    case "Octal":
-      switch(this.state.selectednum2){
-        case "Binary":
-          const text_bin1 = this.state.cal
-          console.log("hi"+text_bin1)
-          var Text_bin1 = parseInt(text_bin1,8).toString(2)
-          console.log("bye"+Text_bin1)
-          this.setState({
-            cal_result: Text_bin1
-          })
-          break
-        case "Decimal":
-          const text_dec1 = this.state.cal
-          var Text_dec1 = parseInt(text_dec1,8).toString(10)
-          this.setState({
-            cal_result: Text_dec1
-          })
-          break
-        case "Hexadecimal":
-          const text_hex1 = this.state.cal
-          var Text_hex1 = parseInt(text_hex1,8).toString(16).toUpperCase()
-          this.setState({
-            cal_result: Text_hex1
-          })
-          break
-      }
-      break
-    case "Hexadecimal" :
-      switch(this.state.selectednum2){
-        case "Binary":
-          const text_bin2 = this.state.cal
-          var Text_bin2 = parseInt(text_bin2,16).toString(2)
-          this.setState({
-            cal_result: Text_bin2
-          })
-          break
-        case "Decimal":
-          const text_dec2 = this.state.cal
-          var Text_dec2 = parseInt(text_dec2,16).toString(10)
-          this.setState({
-            cal_result: Text_dec2
-          })
-          break
-        case "Octal":
-          const text_oct2 = this.state.cal
-          var Text_oct2 = parseInt(text_oct2,16).toString(8)
-          this.setState({
-            cal_result: Text_oct2
-          })
-          break
-      }
-      break
+  calculate() {
 
-    
-  }
- 
+    let numsys_text = this.state.selectednum
+    switch (numsys_text) {
+      case "Binary":
+        switch (this.state.selectednum2) {
+          case "Decimal":
+            const text = this.state.cal
+            let Text = parseInt(text, 2)
+            this.setState({
+              cal_result: Text
+            })
+            break
+          case "Octal":
+            const text1 = this.state.cal
+            var Text1 = parseInt(text1, 2).toString(8)
+            this.setState({
+              cal_result: Text1
+            })
+            break
+
+          case "Hexadecimal":
+            const text2 = this.state.cal
+            var Text2 = parseInt(text2, 2).toString(16).toUpperCase()
+            console.log(Text2)
+            this.setState({
+              cal_result: Text2
+            })
+            break
+
+          case "0":
+
+            break
+        }
+        break
+      case "Decimal":
+        switch (this.state.selectednum2) {
+          case "Binary":
+            const text_bin = this.state.cal
+            var Text_bin = parseInt(text_bin).toString(2)
+            this.setState({
+              cal_result: Text_bin
+            })
+            break
+          case "Octal":
+            const text_oct = this.state.cal
+            var Text_oct = parseInt(text_oct).toString(8)
+            this.setState({
+              cal_result: Text_oct
+            })
+            break
+          case "Hexadecimal":
+            const text_hex = this.state.cal
+            var Text_hex = parseInt(text_hex).toString(16).toUpperCase()
+            this.setState({
+              cal_result: Text_hex
+            })
+            break
+        }
+        break
+      case "Octal":
+        switch (this.state.selectednum2) {
+          case "Binary":
+            const text_bin1 = this.state.cal
+            console.log("hi" + text_bin1)
+            var Text_bin1 = parseInt(text_bin1, 8).toString(2)
+            console.log("bye" + Text_bin1)
+            this.setState({
+              cal_result: Text_bin1
+            })
+            break
+          case "Decimal":
+            const text_dec1 = this.state.cal
+            var Text_dec1 = parseInt(text_dec1, 8).toString(10)
+            this.setState({
+              cal_result: Text_dec1
+            })
+            break
+          case "Hexadecimal":
+            const text_hex1 = this.state.cal
+            var Text_hex1 = parseInt(text_hex1, 8).toString(16).toUpperCase()
+            this.setState({
+              cal_result: Text_hex1
+            })
+            break
+        }
+        break
+      case "Hexadecimal":
+        switch (this.state.selectednum2) {
+          case "Binary":
+            const text_bin2 = this.state.cal
+            var Text_bin2 = parseInt(text_bin2, 16).toString(2)
+            this.setState({
+              cal_result: Text_bin2
+            })
+            break
+          case "Decimal":
+            const text_dec2 = this.state.cal
+            var Text_dec2 = parseInt(text_dec2, 16).toString(10)
+            this.setState({
+              cal_result: Text_dec2
+            })
+            break
+          case "Octal":
+            const text_oct2 = this.state.cal
+            var Text_oct2 = parseInt(text_oct2, 16).toString(8)
+            this.setState({
+              cal_result: Text_oct2
+            })
+            break
+        }
+        break
+
+
+    }
+
   }
 
-  opration(text){
-    switch(text){
+  opration(text) {
+    switch (text) {
       case "Del":
         const text = this.state.cal.split('')
         text.pop()
         this.setState({
-        cal: text.join('')
-          })
+          cal: text.join('')
+        })
         break
       case "AC":
-        let text1= ""
-          
+        let text1 = ""
+
         this.setState({
-          cal:text1,
+          cal: text1,
           cal_result: text1
         })
-        break 
+        break
     }
-    
+
   }
 
   buttonPressed(text) {
 
-    if(text== "="){            
-      return  this.calculate()
+    if (text == "=") {
+      return this.calculate()
     }
-    else if(text == "Del"){
-     return this.opration(text)
+    else if (text == "Del") {
+      return this.opration(text)
     }
-    else if(text == "AC"){
+    else if (text == "AC") {
       return this.opration(text)
     }
     this.setState({
-      cal: this.state.cal+text
+      cal: this.state.cal + text
     }
     )
-    
+
   }
-  numsys(value) {
+  numsys() {
+    let value = this.state.selectednum
     switch (value) {
       case "Binary":
         for (let k = 0; k < 5; k++) {
@@ -222,18 +223,16 @@ export default class NumeralScreen extends Component {
         this.setState([this.state.nums = [["AC", "Del", "F", "E"], [7, 8, 9, "D"], [4, 5, 6, "C"], [1, 2, 3, "B"], [".", 0, "=", "A"]]])
 
         break
-      default:
-        // console.log(value)
 
     }
   }
- 
+
 
   render() {
     const { navigation } = this.props;
 
     let rows = []
-    
+
     for (let i = 0; i < 5; i++) {
       let row = []
       for (let j = 0; j < 4; j++) {
@@ -246,7 +245,7 @@ export default class NumeralScreen extends Component {
       }
       rows.push(<View key={i} style={styles.row}>{row}</View>)
     }
-   
+
 
 
     return (
@@ -261,7 +260,7 @@ export default class NumeralScreen extends Component {
               mode='dropdown'
               style={styles.Picker}
               selectedValue={this.state.selectednum}
-              onValueChange={(itemValue, itemIndex) => this.setState({ selectednum: itemValue }, () => { this.numsys(itemValue) })
+              onValueChange={(itemValue, itemIndex) => this.setState({ selectednum: itemValue }, () => { this.numsys() })
               }>
               <Picker.Item label="Select" value="0" />
               <Picker.Item label="BIN" value="Binary" />
@@ -290,7 +289,7 @@ export default class NumeralScreen extends Component {
             </Picker>
           </View>
           <View style={styles.cal_Text_win}>
-            <Text style={styles.cal_Text}>{this.state.cal_result}</Text>
+            <Text style={[styles.cal_Text,{color:"#4f4b4b"}]}>{this.state.cal_result}</Text>
           </View>
         </View>
         <View style={styles.nopad}>
@@ -323,47 +322,32 @@ const styles = StyleSheet.create({
     backgroundColor: 'white'
   },
   numsystem: {
-    //  backgroundColor:"green",
-    //  flex:1,
-    // margin:30,
-    // marginRight:315,
-    // marginTop:30,
     justifyContent: 'center',
     alignItems: 'center'
   },
   Picker: {
-    // marginLeft:20,
     width: 100,
     height: 50,
     flex: 1,
     color: "orange"
   },
   cal_Text_win: {
-    // flexGrow:2,
     flex: 4,
     alignItems: 'flex-end',
-    justifyContent: 'center',
-    // marginLeft:30,
-
+    justifyContent: 'center'
   },
   cal_Text: {
-    fontSize: 25,
+    fontSize: 30,
     color: 'black',
-    // justifyContent:'flex-end'
-    // flexWrap: 'wrap',
-    // justifyContent:'center',
-    // alignItems:'center'
   }
   ,
   cal_result: {
     flex: 1.5,
     alignItems: 'flex-end',
     justifyContent: 'center',
-    backgroundColor: "yellow"
   },
 
   nopad: {
-    // flex:1,
     flexGrow: 7,
     backgroundColor: '#434343',
     flexDirection: 'row'
@@ -391,7 +375,4 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     justifyContent: 'center',
   },
-
-
-
 })
